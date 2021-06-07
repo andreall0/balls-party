@@ -1,0 +1,23 @@
+{
+  "name": "balls-party",
+  "version": "1.0.0",
+  "description": "Select a theme, press on start and make an infinite number of balls.",
+  "main": "script.js",
+  "scripts": {
+    "start": "open src/index.html",
+    "dev": "node-sass -w src/style.scss dist/style.css"
+  },
+  "author": "andreall0",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreall0/balls-party.git"
+  },
+  "bugs": {
+    "url": "https://github.com/andreall0/balls-party/issues"
+  },
+  "homepage": "https://github.com/andreall0/balls-party#readme",
+  "dependencies": {
+    "node-sass": "^6.0.0"
+  }
+}
