@@ -1,0 +1,305 @@
+$color-white: #ffffff;
+$color-black: #000000;
+$color-ebony-clay: #202d3d;
+$color-ebony: #070e16;
+$color-cadet-blue: #adb4c2;
+$color-christine: #e45310;
+$color-transparent: transparent;
+$color-tundora: #444444;
+
+$balls-position-in-sprite: (
+  billiard: 0,
+  dragonball: -70px,
+  emoticons: -140px,
+  fruits: -210px,
+  hearts: -280px,
+  pokeballs: -350px,
+  sheeps: -420px,
+  simple-balls: -490px,
+  soap-bubbles: -560px,
+  sports: -630px,
+  all: -700px,
+);
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes selectedcircle {
+  0% {
+    transform: rotate(0deg) scale(1.3) translateZ(-1000px);
+  }
+  25% {
+    transform: rotate(5deg) scale(1.3) translateZ(-1000px);
+  }
+  50% {
+    transform: rotate(0deg) scale(1.3) translateZ(-1000px);
+  }
+  75% {
+    transform: rotate(-5deg) scale(1.3) translateZ(-1000px);
+  }
+  100% {
+    transform: rotate(0deg) scale(1.3) translateZ(-1000px);
+  }
+}
+
+@keyframes fadeText {
+  0% {
+    opacity: 0;
+    font-size: 15px;
+  }
+  10% {
+    opacity: 1;
+    font-size: 50px;
+  }
+  90% {
+    opacity: 1;
+    font-size: 50px;
+  }
+  100% {
+    opacity: 0;
+    font-size: 15px;
+  }
+}
+
+@keyframes loaderOverlayIn {
+  0% {
+    transform: rotateX(90deg) rotateY(0deg);
+  }
+  40% {
+    transform: rotateX(0deg) rotateY(20deg) scaleX(1.5);
+  }
+  60% {
+    transform: rotateX(0deg rotateY(20deg)) scaleX(1.5);
+  }
+  100% {
+    transform: rotateX(90deg) rotateY(0deg);
+    display: none;
+  }
+}
+
+* {
+  cursor: none;
+}
+
+body {
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  margin: 0;
+  height: 100vh;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  background-image: url("../assets/background.jpg");
+  background-color: $color-ebony;
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-tap-highlight-color: rgba($color-black, 0);
+
+  .wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    height: 100vh;
+    max-width: 600px;
+    z-index: 10;
+
+    .menu-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: slideIn 0.7s linear;
+
+      .title {
+        margin-bottom: 50px;
+        width: 100%;
+        font-size: 24px;
+        text-align: center;
+        text-transform: uppercase;
+        text-shadow: 5px 5px 5px $color-ebony;
+        color: $color-cadet-blue;
+      }
+
+      .circles-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: -20px;
+
+        .image-circle {
+          position: relative;
+          width: 70px;
+          height: 70px;
+          margin: 20px;
+          border-radius: 50px;
+          transition: all 0.3s ease-in-out;
+          border: 2px solid $color-tundora;
+          box-shadow: 0px 0px 20px 0px $color-black;
+          background-image: url("../assets/spritesheet.png");
+          background-size: 1600%;
+          background-repeat: no-repeat;
+          transform: scale(1) translateZ(-1000px);
+
+          @each $name, $position in $balls-position-in-sprite {
+            &##{$name} {
+              background-position: $position 0;
+            }
+          }
+
+          &:hover {
+            transform: scale(1.3);
+            background-size: 1600%;
+          }
+
+          &.selected {
+            border: 2px solid $color-christine;
+            animation: selectedcircle 3s infinite linear;
+          }
+        }
+      }
+
+      .button-container {
+        position: relative;
+        text-align: center;
+        margin-top: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        z-index: 10;
+        transform: translateZ(-1000px);
+
+        .button {
+          outline: none;
+          transition: color 0.5s ease-in-out, background-color 0.5s ease-in-out,
+            transform 0.5s ease-in-out, border 0.5s ease-in-out;
+          background-color: $color-transparent;
+          border-radius: 10px;
+          color: $color-cadet-blue;
+          border: 1px solid $color-cadet-blue;
+          font-size: 20px;
+          padding: 7px 60px;
+          text-transform: uppercase;
+        }
+
+        &:hover .button {
+          transform: rotateX(360deg);
+          border: 1px solid $color-christine;
+          color: $color-christine;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .info-text {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    pointer-events: none;
+    vertical-align: middle;
+    text-align: center;
+    text-align: center;
+    color: $color-christine;
+    font-size: 15px;
+    line-height: 100vh;
+    text-shadow: 5px 5px 5px $color-ebony;
+    animation: fadeText 3s 2s ease-in-out;
+    text-transform: uppercase;
+  }
+
+  .balls-container {
+    width: 100%;
+    height: 100%;
+
+    .ball {
+      position: absolute;
+      top: -1000px;
+      left: -1000px;
+      background-image: url("../assets/spritesheet.png");
+      background-repeat: no-repeat;
+      background-size: 1600%;
+      padding: 0;
+      animation: fadeIn 0.2s ease-in-out;
+
+      &::selection {
+        background-color: $color-transparent;
+      }
+    }
+  }
+
+  .mouse-follower {
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    border: solid 10px $color-christine;
+    width: 0px;
+    height: 0px;
+    border-radius: 20px;
+    z-index: 30;
+    pointer-events: none;
+    transition: border 0.2s ease-in-out, width 0.2s ease-in-out,
+      height 0.2s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 0px 15px 0px $color-white;
+    transform: translateZ(1000px);
+
+    &.circle {
+      position: absolute;
+      border: solid 5px $color-christine;
+      width: 30px;
+      height: 30px;
+      transform: translateX(-10px) translateY(-10px) translateZ(1000px);
+    }
+  }
+
+  .overlay-loader {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $color-ebony;
+    animation: loaderOverlayIn 2s ease-in-out both;
+    z-index: 20;
+  }
+}

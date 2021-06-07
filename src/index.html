@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <title>Balls Party</title>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Select a theme, press on start and make an infinite number of balls."
+    />
+    <meta name="keywords" content="Balls, speed, javascript" />
+    <meta name="author" content="andreall0" />
+    <link rel="stylesheet" href="../dist/style.css" />
+  </head>
+  <body
+    ondragstart="return false"
+    oncontextmenu="return false"
+    onselectstart="return false"
+  >
+    <div class="wrapper">
+      <div class="menu-container">
+        <div class="title">Select theme</div>
+        <div class="circles-container">
+          <div class="image-circle" id="billiard"></div>
+          <div class="image-circle" id="dragonball"></div>
+          <div class="image-circle" id="emoticons"></div>
+          <div class="image-circle" id="fruits"></div>
+          <div class="image-circle" id="hearts"></div>
+          <div class="image-circle" id="pokeballs"></div>
+          <div class="image-circle" id="sheeps"></div>
+          <div class="image-circle" id="simple-balls"></div>
+          <div class="image-circle" id="soap-bubbles"></div>
+          <div class="image-circle" id="sports"></div>
+          <div class="image-circle selected" id="all"></div>
+        </div>
+        <div class="button-container">
+          <button class="button" type="">Start</button>
+        </div>
+      </div>
+    </div>
+    <div class="info-text">Click!</div>
+    <div class="balls-container"></div>
+    <div class="overlay-loader"></div>
+    <div class="mouse-follower"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
