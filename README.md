@@ -14,3 +14,9 @@ Press the following keys to:
 
 See the preview on CodePen:
 [PREVIEW](https://codepen.io/andreall0/pen/qyweKW)
+
+# SCREENSHOOTS
+
+![Screenshot 1](https://github.com/andreall0/balls-party/blob/main/assets/screenshots/screenshot_1.png?raw=true)
+
+![Screenshot 2](https://github.com/andreall0/balls-party/blob/main/assets/screenshots/screenshot_2.png?raw=true)
