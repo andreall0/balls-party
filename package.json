@@ -4,7 +4,7 @@
   "description": "Select a theme, press on start and make an infinite number of balls.",
   "main": "script.js",
   "scripts": {
-    "start": "open src/index.html",
+    "start": "start src/index.html",
     "dev": "node-sass -w src/style.scss dist/style.css"
   },
   "author": "andreall0",
